@@ -1,0 +1,80 @@
+﻿<Window x:Class="TreeViewApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:TreeViewApp.ViewModel"
+		ResizeMode="CanMinimize"
+		WindowStartupLocation="Manual"
+        WindowStyle="SingleBorderWindow"
+        SizeChanged="Window_SizeChanged"
+		Width="1000"
+		Height="500"
+        MinWidth="500"
+        MinHeight="250"
+        Background="Transparent"
+        MouseDown="Window_MouseDown"
+        d:DataContext="{d:DesignInstance Type=viewModel:MainWindowViewModel, 
+											IsDesignTimeCreatable=False}"
+		DataContext="{Binding Mode=OneWay, RelativeSource={RelativeSource Self}}"
+        mc:Ignorable="d">
+    <Border
+        Background="{StaticResource DarkPrimaryColor}">
+       
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*" />
+            <RowDefinition Height="10.5*"/>
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="7*" />
+                <ColumnDefinition Width="9*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Label 
+            Grid.Row="0"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            Margin="15,0,0,0"
+            Content="TreeView Application"
+            Style="{StaticResource LabelMainStyle}"/>
+        <Border
+			Grid.Column="1"
+			Grid.Row="1"
+            Margin="15"
+            CornerRadius="10"
+            Background="Transparent"
+			BorderBrush="{StaticResource DividerColor}"
+			BorderThickness="1" />
+        <Border
+			Grid.Column="2"
+			Grid.Row="1"
+            Margin="15"
+            CornerRadius="10"
+            Background="{StaticResource AccentColor}"
+			BorderBrush="{StaticResource DividerColor}"
+			BorderThickness="2" />
+        <ContentControl 
+            x:Name="MainViewControl"
+			Grid.Row="1"
+			Grid.Column="1"
+            Margin="20"
+			HorizontalAlignment="Stretch"
+			VerticalAlignment="Stretch"
+			Background="Transparent"
+			BorderBrush="Transparent"
+			Content="{Binding MainViewPage}" />
+        <ContentControl 
+			Grid.Row="1"
+			Grid.Column="2"
+            Margin="20"
+			HorizontalAlignment="Stretch"
+			VerticalAlignment="Stretch"
+			Background="Transparent"
+			BorderBrush="Transparent"
+			Content="{Binding ContentViewPage}" />
+    </Grid>
+    </Border>
+</Window>
